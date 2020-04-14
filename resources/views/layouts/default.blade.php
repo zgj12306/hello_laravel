@@ -3,6 +3,7 @@
 <head>
     <title>@yield('title', 'Weibo APP') - Laravle 新手入门教程</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <script src="{{ mix('js/app.js') }}"></script>
 </head>
 <body>
 @include('layouts._header')
@@ -13,6 +14,9 @@
         @include('layouts._footer')
     </div>
 </div>
+<script>
+
+</script>
 
 </body>
 </html>
