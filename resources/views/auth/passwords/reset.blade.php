@@ -17,8 +17,7 @@
                     <div class="form-group row">
                         <label for="email" class="col-md-4 col-form-label text-md-right">Email 地址</label>
                         <div class="col-md-6">
-                            <input id="email" type="email"
-                                   class="form-control{{ $errors->has('email') ? 'has-error' : '' }}">
+                            <input id="email" type="email" name="email" value="{{ $email }}" class="form-control{{ $errors->has('email') ? 'has-error' : '' }}">
 
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
@@ -46,7 +45,7 @@
                         <label for="password-confirm" class="col-md-4 col-form-label text-md-right">确认密码</label>
 
                         <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control{{ $errors->has('email') ? 'has-error' : '' }}" name="password-confirm">
+                            <input id="password-confirm" type="password" class="form-control{{ $errors->has('email') ? 'has-error' : '' }}" name="password_confirmation">
                         </div>
                     </div>
 
@@ -59,3 +58,4 @@
             </div>
         </div>
     </div>
+@stop
