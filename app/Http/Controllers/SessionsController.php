@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class SessionsController extends Controller
 {
@@ -19,6 +22,11 @@ class SessionsController extends Controller
         return view('sessions.create');
     }
 
+    /**
+     * @param Request $request
+     * @return RedirectResponse|Redirector
+     * @throws ValidationException
+     */
     public function store(Request $request)
     {
         $credentials = $this->validate($request, [
@@ -41,6 +49,9 @@ class SessionsController extends Controller
         }
     }
 
+    /**
+     * @return RedirectResponse|Redirector
+     */
     public function destroy()
     {
         Auth::logout();

@@ -8,11 +8,19 @@ use Illuminate\Support\Facades\Auth;
 
 class FollowersController extends Controller
 {
+    /**
+     * FollowersController constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function store(User $user)
     {
         $this->authorize('follow', $user);
@@ -24,6 +32,11 @@ class FollowersController extends Controller
         return redirect()->route('users.show', $user->id);
     }
 
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function destroy(User $user)
     {
         $this->authorize('follow', $user);

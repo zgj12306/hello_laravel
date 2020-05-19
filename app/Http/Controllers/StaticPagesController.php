@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class StaticPagesController extends Controller
 {
+    /**
+     * @return Factory|View
+     */
     public function home()
     {
         $feed_items = [];
@@ -16,11 +21,17 @@ class StaticPagesController extends Controller
         return view('static_pages/home', compact('feed_items'));
     }
 
+    /**
+     * @return Factory|View
+     */
     public function help()
     {
         return view('static_pages/help');
     }
 
+    /**
+     * @return Factory|View
+     */
     public function about()
     {
         return view('static_pages/about');
@@ -41,6 +52,11 @@ class StaticPagesController extends Controller
         var_dump(count($tempArr));
     }
 
+    /**
+     * @param $tempArr
+     * @param $char
+     * @return array
+     */
     public function t($tempArr, $char)
     {
         $temp = [];
@@ -53,7 +69,10 @@ class StaticPagesController extends Controller
         return $temp;
     }
 
-    public function arrange($str)
+    /**
+     * @param string $str
+     */
+    public function arrange(string $str)
     {
         $a = str_split($str);
         $temp = [];
@@ -61,7 +80,13 @@ class StaticPagesController extends Controller
         var_dump(count($temp));
     }
 
-    public function perm(&$ar, $begin, $end, &$temp)
+    /**
+     * @param $ar
+     * @param $begin
+     * @param $end
+     * @param $temp
+     */
+    private function perm(&$ar, $begin, $end, &$temp)
     {
         if ($begin == $end) {
             $temp[] = join('', $ar);
@@ -75,7 +100,11 @@ class StaticPagesController extends Controller
         }
     }
 
-    public function swap(&$a, &$b)
+    /**
+     * @param $a
+     * @param $b
+     */
+    private function swap(&$a, &$b)
     {
         $c = $a;
         $a = $b;

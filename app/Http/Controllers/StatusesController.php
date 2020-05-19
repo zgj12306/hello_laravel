@@ -13,6 +13,11 @@ class StatusesController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -26,6 +31,11 @@ class StatusesController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param Status $status
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function destroy(Status $status)
     {
         $this->authorize('destroy', $status);
